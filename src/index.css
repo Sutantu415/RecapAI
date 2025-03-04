@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Glacial Indifference";
+  src: url("../fonts/GlacialIndifference-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -7,7 +14,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: linear-gradient(to right, #010102, #3533CC);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,34 +33,21 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  background: linear-gradient(to right, #8C53FF, #5CE0E6);
+  margin-top: 80px;
+  padding: 10px 45px;
+  outline: 1px solid transparent;
+  transition: outline-color 0.3s ease-in-out;
+  font-family: "Glacial Indifference", sans-serif;
+  font-size: 17px;
 }
 button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline-color: #8C52FF;
 }
 
 @media (prefers-color-scheme: light) {
@@ -66,5 +60,50 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+    letter-spacing: 1px; /* Slight spacing for clarity */
   }
+}
+
+p.company {
+  position: relative;
+  align-self: flex-end;
+  font-family: "Jaturat", sans-serif;
+  font-size: 30px;
+  color: #8C52FF;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 100px;
+}
+
+p.company span:first-child {
+  font-family: "Glacial Indifference", sans-serif;
+  font-size: 12px;
+  color: white;
+  line-height: 0.25;
+  display: block;
+}
+
+h1.home {
+  @apply text-8xl;
+  font-family: "Jaturat", sans-serif;
+  font-size: 100px;
+  -webkit-text-stroke: 2px white; /* Thicker outline for bold effect */
+  letter-spacing: 1px; /* Slight spacing for clarity */
+  text-shadow: 
+    -2px -2px 1px rgba(255, 255, 255, 0.6), /* Subtle inner shadow */
+     2px -2px 1px rgba(255, 255, 255, 0.6),
+    -2px  2px 1px rgba(255, 255, 255, 0.6),
+     2px  2px 1px rgba(255, 255, 255, 0.6),
+     0px  0px 15px rgba(255, 255, 255, 0.8), /* Soft glow */
+     0px  0px 30px rgba(255, 255, 255, 0.6), /* More spread out */
+     0px  0px 50px rgba(255, 255, 255, 0.4); /* Largest glow effect */
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* Makes it vertical */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  height: auto;
+  gap: 20px; /* Adds spacing between elements */
 }
