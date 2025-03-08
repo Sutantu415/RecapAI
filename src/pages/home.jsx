@@ -1,9 +1,10 @@
-import { useState } from 'react'
 import recapLogo from '/src/assets/recapLogo.png'
-import './App.css'
+import { useNavigate } from 'react-router-dom'
+import '../App.css'
 
 function Home() {
-  const [count, setCount] = useState(0)
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -23,15 +24,15 @@ function Home() {
         <div>
           <h1 className='home'>
             MAKING
-            <br/>
-            MEETINGS
+            <br/> 
+            MEETINGS 
             <br/>
             WORK FOR YOU
           </h1>
         </div>
         { /* Third div for button to access app */ }
         <div>
-          <button className='button'>
+          <button className='button home hover:shadow-[0_0_35px_#FFFFFF] mt-[80px]' onClick={() => {navigate('/meetingInfo')}}>
             Get Started &gt;&gt;
           </button>
         </div>
