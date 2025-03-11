@@ -15,7 +15,7 @@ function Home() {
           <p className='company'>
             RECAP
             <span>
-              FOUR-EYES
+              KRUSTY KRAB
             </span>
             AI
           </p>
