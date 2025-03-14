@@ -8,9 +8,9 @@ function Home() {
 
   return (
     <>
-      <div className='container'>
+      <div className='flex flex-col items-center justify-center h-auto'>
         { /* First div for web app name and dev team */ }
-        <div className='flex w-full justify-center'>
+        <div className='flex justify-center'>
           <img src={recapLogo} className='w-12 h-13 mt-4 mr-2' alt='recapAI logo' />
           <p className='company'>
             RECAP

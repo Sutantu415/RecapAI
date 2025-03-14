@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css"; // Keep your existing CSS imports
+import MeetingsList from '/src/utils/meetings.jsx';
 import { SYSTEM_CONFIG } from "../common/constants";
 import { messageGPT } from "../utils/chatGPT";
 import { readFile } from "../utils/files";
@@ -10,6 +11,9 @@ function MeetingPage() {
   const [meetingTitle, setMeetingTitle] = useState("");
   const [file, setFile] = useState(null);
   const [transcript, setTranscript] = useState("");
+  // Retrieve meetings from localStorage
+  const meetings = JSON.parse(localStorage.getItem('meetings')) || [];
+
   
   const navigate = useNavigate();
 
@@ -30,7 +34,7 @@ function MeetingPage() {
       role: "user",
       content: prompt
     }).then((response) => {
-        navigate('/result', { state: { response }});
+        navigate('/result', { state: { response: response.content, meetingTitle }});
     }).catch((error) => {
         console.error(error);
     });
@@ -76,12 +80,22 @@ function MeetingPage() {
     setTranscript("");
   };
 
+  // Function to handle meeting selection
+  const handleSelectMeeting = (meeting) => {
+    navigate('/result', { state: { response: meeting.response, meetingTitle: meeting.title }});
+  };
+
   return (
     <>
-        <div className="flex min-h-screen pr-10 pl-5">
+        { /* Header */ }
+        <div className="flex items-center w-98/100">
+          <MeetingsList className='mt-5' meetings={meetings} onSelect={handleSelectMeeting} />
+        </div>
+        { /* Content */ }
+        <div className="flex min-h-screen pr-10 pl-5 ml-20 mr-30">
             <form className="w-full font-Glacial" onSubmit={ handleSubmit }>
               { /* Meeting Details Form Header */}
-              <h1 className=" font-bold text-4xl text-left font-GlacialBold mt-20">Meeting Details</h1>
+              <h1 className=" font-bold text-4xl text-left font-GlacialBold">Meeting Details</h1>
               { /* Meeting Title Input */ }
               <input className='w-full mt-4 pl-3 py-2 bg-gray-300/25' type="text" placeholder="Enter Meeting Title..." value={meetingTitle} onChange={(e) => setMeetingTitle(e.target.value)} />
               { /* File Upload Input */ }
