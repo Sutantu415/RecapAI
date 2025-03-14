@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import dropDownBtn from '/src/assets/dropDown-btn.png'
+import dropDownBtn from '/assets/dropDown-btn.png'
 import MeetingsOverlay from './meetingsOverlay'
 
 function MeetingsList({ meetings, onSelect, className }) {
