@@ -2,6 +2,10 @@
 
 RecapAI is a React application built with Vite that allows users to process meeting transcripts, extract summaries and action items, and store meeting details. Users can also view and manage previously stored meetings.
 
+## Live Demo
+
+Check out the live demo of RecapAI [here](https://amazing-macaron-76c421.netlify.app/).
+
 ## Features
 
 - Process meeting transcripts to extract summaries and action items using GPT-3.
