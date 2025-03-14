@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import dropdownBtn from '/src/assets/dropdown-btn.png'
 import MeetingsList from '/src/utils/meetings.jsx'
 import "../App.css"; // Keep your existing CSS imports
 import { useNavigate, useLocation } from "react-router-dom"
