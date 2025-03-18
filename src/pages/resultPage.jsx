@@ -10,6 +10,7 @@ function ResultPage() {
     const [actionItems, setActionItems] = useState("");
     const response = location.state?.response || "No response found";
     const meetingTitle = location.state?.meetingTitle || "No meeting title found";
+    const [meetingName, setMeetingName] = useState(meetingTitle);
     const meetings = JSON.parse(localStorage.getItem('meetings')) || [];
 
     // Load the response into the state and into localStorage
@@ -44,6 +45,7 @@ function ResultPage() {
     const handleSelectMeeting = (meeting) => {
         setSummary(meeting.summary);
         setActionItems(meeting.actionItems);
+        setMeetingName(meeting.title);
     };
 
     // TODO: Add a button to copy the summary and action items to the clipboard (use the Clipboard API)
@@ -60,7 +62,7 @@ function ResultPage() {
             <div className="flex min-h-screen font-Glacial ml-20 mr-30">
                 <div className="w-full">
                     { /* Div for back to meeting button */ }
-                    <h1 className="font-bold text-4xl text-left font-GlacialBold">Meeting Summary</h1>
+                    <h1 className="font-bold text-4xl text-left font-GlacialBold">{meetingName} Summary</h1>
                     <textarea id='summary' className='w-full mt-4 pl-3 py-2 pb-50 bg-gray-300/25' readOnly placeholder="Generated summary based on the provided transcript..." value={summary} />
                     <></>
                     <div className="flex w-full mt-5 gap-5 justify-between">

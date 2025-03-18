@@ -11,6 +11,7 @@ function MeetingPage() {
   const [meetingTitle, setMeetingTitle] = useState("");
   const [file, setFile] = useState(null);
   const [transcript, setTranscript] = useState("");
+  const [status, setStatus] = useState("Process Meeting");
   // Retrieve meetings from localStorage
   const meetings = JSON.parse(localStorage.getItem('meetings')) || [];
 
@@ -43,6 +44,9 @@ function MeetingPage() {
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Change button status to indicate meeting is being processed
+    setStatus("Processing...");
+    
     // Check if the meeting title is empty
     if (meetingTitle === "") {
       alert("Please enter a meeting title");
@@ -111,7 +115,7 @@ function MeetingPage() {
               { /* Buttons */ }
               <div className='flex mt-2 gap-4'>
                 { /* Submit Button */ }
-                <button type="submit" className='bg-[#8C52FF] hover:bg-[#7A42E6] text-white rounded-lg px-4 py-2' >Process Meeting</button>
+                <button type="submit" className='bg-[#8C52FF] hover:bg-[#7A42E6] text-white rounded-lg px-4 py-2'>{status}</button>
                 { /* Clear Button */ }
                 <button type="button" className='bg-[#545454] hover:bg-[#484848] text-white rounded-lg px-8' onClick={clearFunction}>Clear</button>
               </div>
